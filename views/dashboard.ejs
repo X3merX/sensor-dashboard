@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensor Dashboard</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Sensor Dashboard</h1>
+
+    <div class="card">
+      <h2>Informasi Suhu</h2>
+      <ul class="info-list">
+        <li><strong>Suhu Maksimum:</strong> <%= data.suhumax %> °C</li>
+        <li><strong>Suhu Minimum:</strong> <%= data.suhumin %> °C</li>
+        <li><strong>Suhu Rata-rata:</strong> <%= data.suhurata %> °C</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Nilai Suhu dan Kelembaban Maksimum</h2>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Idx</th>
+            <th>Suhu (°C)</th>
+            <th>Kelembaban (%)</th>
+            <th>Kecerahan</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.nilai_suhu_max_humid_max.forEach(item => { %>
+            <tr>
+              <td><%= item.idx %></td>
+              <td><%= item.suhu %></td>
+              <td><%= item.humid %></td>
+              <td><%= item.kecerahan %></td>
+              <td><%= item.timestamp %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Bulan dan Tahun Maksimum</h2>
+      <ul class="month-year-list">
+        <% data.month_year_max.forEach(entry => { %>
+          <li><%= entry.month_year %></li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
